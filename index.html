@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Uma declaração de amor especial para a pessoa mais importante da minha vida">
+  <meta name="keywords" content="amor, declaração, namorada, surpresa romântica">
+  <meta name="author" content="Gabriel">
+  <title>Te Amo Mais Que Tudo! ❤️</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Vídeo de fundo */
+    video.background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    /* Corações flutuantes */
+    .heart {
+      position: absolute;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      padding-top: 30px;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      color: #e91e63;
+      font-family: 'Dancing Script', cursive;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .intro-text {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 30px;
+      font-family: 'Dancing Script', cursive;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    section {
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      color: #e91e63;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      text-align: center;
+      line-height: 1.6;
+      margin: 0 auto 15px;
+      color: #333;
+      max-width: 700px;
+    }
+
+    /* Galeria de Imagens */
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 3px solid #fff;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(233, 30, 99, 0.8);
+      color: white;
+      padding: 10px;
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 9px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-item:hover .image-caption {
+      opacity: 1;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px auto 0;
+      display: block;
+      font-family: 'Dancing Script', cursive;
+      box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+    }
+
+    button:hover {
+      background-color: #c2185b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: #333;
+      padding: 25px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    footer p:first-child {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    footer p:last-child {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Efeito de confete */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      animation: confetti 5s ease-in-out;
+      z-index: 1000;
+    }
+
+    @keyframes confetti {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Novos estilos para as seções adicionadas */
+    .reasons-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .reason-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1.1rem;
+      border-left: 5px solid #e91e63;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(233, 30, 99, 0.2);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 30px auto;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e91e63;
+    }
+
+    .timeline-event {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      position: relative;
+      border-left: 3px solid #e91e63;
+    }
+
+    .timeline-event::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e91e63;
+      border: 3px solid white;
+    }
+
+    .timeline-event h3 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos do Quiz Aprimorados */
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .quiz-question {
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .quiz-question p {
+      font-size: 1.3rem;
+      color: #e91e63;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      margin: 12px 0;
+      background: #f8f8f8;
+      border: 2px solid #e91e63;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .quiz-option:hover {
+      background: #e91e63;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(233, 30, 99, 0.2);
+    }
+
+    .quiz-option[data-correct] {
+      border-color: #4CAF50;
+    }
+
+    .quiz-option[data-correct]:hover {
+      background: #4CAF50;
+    }
+
+    .quiz-option.selected-correct {
+      background: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+
+    .quiz-option.selected-correct::after {
+      content: ' ✓';
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .quiz-option.selected-wrong {
+      background: #F44336;
+      color: white;
+      border-color: #F44336;
+    }
+
+    .quiz-option.selected-wrong::after {
+      content: ' ✕';
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .letter {
+      background: url('https://img.freepik.com/free-photo/vintage-letter-texture_1194-6500.jpg') center/cover;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .handwritten-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      color: #333;
+      text-align: left;
+    }
+
+    #love-timer {
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .promises-list {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .promises-list li {
+      background: rgba(255, 255, 255, 0.95);
+      margin-bottom: 15px;
+      padding: 15px 20px 15px 50px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .promises-list li::before {
+      content: '❤️';
+      position: absolute;
+      left: 15px;
+      top: 15px;
+    }
+
+    .dreams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .dream-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dream-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(233, 30, 99, 0.2);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+      }
+
+      section p, .intro-text {
+        font-size: 1.1rem;
+      }
+
+      .image-gallery img {
+        height: 250px;
+      }
+      
+      footer p:first-child {
+        font-size: 1.3rem;
+      }
+
+      .handwritten-text {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      section p, .intro-text {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+      
+      section {
+        padding: 20px 15px;
+      }
+      
+      footer {
+        padding: 20px 15px;
+      }
+      
+      footer p:first-child {
+        font-size: 1.2rem;
+      }
+
+      .handwritten-text {
+        font-size: 1.1rem;
+      }
+
+      .reason-card, .timeline-event, .dream-card {
+        padding: 15px;
+      }
+
+      /* Responsividade do Quiz */
+      .quiz-question {
+        padding: 20px 15px;
+      }
+      
+      .quiz-question p {
+        font-size: 1.1rem;
+      }
+      
+      .quiz-option {
+        padding: 12px 15px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vídeo de fundo -->
+  <video class="background-video" autoplay muted loop>
+    <source src="170031-842720093.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos em formato MP4.
+  </video>
+
+  <!-- Corações flutuantes -->
+  <div id="hearts-container"></div>
+
+  <header>
+    <h1>Para a pessoa mais especial do meu mundo ❤️</h1>
+  </header>
+
+  <section>
+    <p class="intro-text">Mariana, cada momento ao seu lado é um presente que eu guardo com todo cuidado no meu coração. Este site é apenas um pequeno reflexo do imenso amor que sinto por você. Você é a razão do meu sorriso e a dona do meu coração.</p>
+  </section>
+
+  <section>
+    <h2>Nossa História</h2>
+    <p>Desde o primeiro momento em que nossos olhares se cruzaram, eu sabia que havia algo especial entre nós. Cada risada, cada conversa, cada momento ao seu lado só confirmou o que meu coração já sabia: você é o amor da minha vida.</p>
+    <p>Lembro de cada detalhe, desde nosso primeiro encontro até os planos que fazemos para o futuro. Você transformou minha vida em algo mais bonito do que eu poderia imaginar.</p>
+  </section>
+
+  <section class="gallery">
+    <h2>Nossos Momentos</h2>
+    <p>Algumas das muitas memórias felizes que construímos juntos:</p>
+    <div class="image-gallery">
+      <div class="gallery-item">
+        <img src="minhamui1e.png" alt="Nossos encontros">
+        <div class="image-caption">Nossas idas ao shopping são as melhores!!</div>
+      </div>
+      <div class="gallery-item">
+        <img src="minhamuie.png" alt="">
+        <div class="image-caption"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="muie2.png" alt="Nosso momento especial">
+        <div class="image-caption">Um dos nossos melhores momentos juntos - nosso Ano Novo</div>
+      </div>
+      <!-- Adicione mais fotos conforme necessário -->
+    </div>
+  </section>
+
+  <section>
+    <h2>10 Razões Pelas Que Eu Te Amo</h2>
+    <div class="reasons-container">
+      <div class="reason-card">1. Seu sorriso ilumina meus dias ☀️</div>
+      <div class="reason-card">2. Você me faz ser uma pessoa melhor 💖</div>
+      <div class="reason-card">3. Seu abraço é meu lugar favorito 🏡</div>
+      <div class="reason-card">4. Você me entende como ninguém 🧠</div>
+      <div class="reason-card">5. Seu coração generoso e amoroso ❤️</div>
+      <div class="reason-card">6. Sua determinação me inspira 💪</div>
+      <div class="reason-card">7. Você me faz rir até doer a barriga 😂</div>
+      <div class="reason-card">8. Seus olhos me perdem e me encontram 👀</div>
+      <div class="reason-card">9. Você aceita meus defeitos e meus medos 🤗</div>
+      <div class="reason-card">10. Simplesmente porque é você, minha Mariana 🌟</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Nossa Linha do Tempo</h2>
+    <div class="timeline">
+      <div class="timeline-event">
+        <h3>💋 21/10/2024</h3>
+        <p>Nosso primeiro beijo - enquanto jogávamos sinuca, com muita vergonha e felicidade</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O Quanto Você Me Conhece?</h2>
+    <div class="quiz-container">
+      <div class="quiz-question">
+        <p>Qual é minha comida favorita que você faz?</p>
+        <button class="quiz-option">Strogonoff</button>
+        <button class="quiz-option" data-correct>Bife Com Arroz</button>
+        <button class="quiz-option">Bolo de chocolate</button>
+      </div>
+      <div class="quiz-question">
+        <p>Qual foi nosso primeiro filme assistido juntos? Inteiro kkkk</p>
+        <button class="quiz-option">Como Eu Era Antes de Você</button>
+        <button class="quiz-option">A Culpa é das Estrelas</button>
+        <button class="quiz-option" data-correct>Esposa De Mentirinha</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter">
+    <h2>Uma Carta Para Você</h2>
+    <div class="handwritten-text">
+      "Minha querida Mariana,
+      Quando te vi pela primeira vez, algo dentro de mim mudou para sempre. Seus olhos, seu sorriso, sua voz - tudo em você me cativou desde o primeiro instante.
+      Nesses meses juntos, você me mostrou o que é amar e ser amado de verdade. Cada dia ao seu lado é uma bênção que eu não sei como mereci, mas que prometo valorizar para sempre.
+      Você é minha paz nos dias difíceis, minha alegria nos dias comuns e minha comemoração nos dias especiais. Não consigo imaginar minha vida sem você nela.
+      Prometo estar ao seu lado nos bons e maus momentos, te amar quando for fácil e quando for difícil, e construir uma vida linda ao seu lado.
+      Obrigado por ser você e por me permitir fazer parte da sua vida.
+      Com todo meu amor,
+      Seu Gabriel 💖"
+    </div>
+  </section>
+
+  <section>
+    <h2>Nosso Tempo Juntos</h2>
+    <div id="love-timer">
+      <p>🕒 <span id="days-together">0</span> dias, <span id="hours-together">0</span> horas e <span id="minutes-together">0</span> minutos de pura felicidade!</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Minhas Promessas Para Você</h2>
+    <ul class="promises-list">
+      <li>Prometo te fazer café da manhã nos domingos</li>
+      <li>Prometo escrever bilhetes surpresa para você</li>
+      <li>Prometo te ouvir com paciência e atenção</li>
+      <li>Prometo te abraçar apertado quando você precisar</li>
+      <li>Prometo lembrar todos os nossos "momentos" especiais</li>
+      <li>Prometo te amar mais a cada dia que passar</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Nossos Sonhos</h2>
+    <div class="dreams-grid">
+      <div class="dream-card">✈️ Viajar juntos</div>
+      <div class="dream-card">🏡 Ter uma casa</div>
+      <div class="dream-card">🐶 Adotar um cachorrinho</div>
+      <div class="dream-card">🌄 Ver o nascer do sol na praia</div>
+      <div class="dream-card">🎂 Comemorar muitos aniversários juntos</div>
+      <div class="dream-card">💍 Construir uma vida inteira de amor</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O Que Você Significa Para Mim</h2>
+    <p>Você é meu porto seguro, minha inspiração e minha maior alegria. Te amo não só pelo que você é, mas pelo que eu me torno quando estou ao seu lado.</p>
+    <p>Nenhuma palavra é capaz de expressar completamente o que sinto, mas se eu pudesse resumir em uma frase: você é o amor da minha vida e eu sou infinitamente grato por ter você comigo.</p>
+  </section>
+
+  <section>
+    <h2>Surpresa Especial!</h2>
+    <p>Clique no botão abaixo para receber uma mensagem especial:</p>
+    <button id="surpriseBtn">Clique Aqui, Amor ❤️</button>
+    <div id="surpriseMessage" style="display:none; text-align: center;">
+      <p style="color: #e91e63; font-size: 1.8rem; margin-top: 20px; font-family: 'Dancing Script', cursive; animation: pulse 1.5s infinite;">Eu te amo mais do que todas as estrelas no céu! 💖</p>
+      <p style="font-size: 1.2rem; margin-top: 10px;">Você é a realização de todos os meus sonhos e a pessoa que eu quero ao meu lado para sempre.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Feito com todo o amor do meu coração</p>
+    <p>Para a mulher mais incrível do universo ❤️</p>
+  </footer>
+
+  <script>
+    // Criar corações flutuantes
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts-container');
+      const heartCount = 15;
+      
+      for (let i = 0; i < heartCount; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerHTML = '❤️';
+          heart.classList.add('heart');
+          
+          // Posição aleatória
+          const startPositionX = Math.random() * window.innerWidth;
+          heart.style.left = startPositionX + 'px';
+          heart.style.bottom = '-50px';
+          
+          // Tamanho aleatório
+          const size = Math.random() * 30 + 20;
+          heart.style.fontSize = size + 'px';
+          
+          // Duração da animação aleatória
+          const duration = Math.random() * 5 + 5;
+          heart.style.animationDuration = duration + 's';
+          
+          // Atraso aleatório
+          const delay = Math.random() * 5;
+          heart.style.animationDelay = delay + 's';
+          
+          heartsContainer.appendChild(heart);
+          
+          // Remover coração após animação
+          setTimeout(() => {
+            heart.remove();
+          }, duration * 1000);
+        }, i * 1000);
+      }
+    }
+    
+    // Criar corações continuamente
+    createHearts();
+    setInterval(createHearts, 15000);
+    
+    // Mostrar surpresa com confete
+    document.getElementById("surpriseBtn").addEventListener("click", function() {
+      const surpriseMessage = document.getElementById("surpriseMessage");
+      surpriseMessage.style.display = "block";
+      
+      // Criar efeito de confete
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          
+          // Cores aleatórias
+          const colors = ['#e91e63', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.backgroundColor = randomColor;
+          
+          // Formas aleatórias
+          const shapes = ['❤️', '🌟', '💖', '🥰', '😍'];
+          const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+          confetti.innerHTML = randomShape;
+          confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+          
+          // Posição aleatória
+          confetti.style.left = Math.random() * window.innerWidth + 'px';
+          confetti.style.top = '-50px';
+          
+          // Duração aleatória
+          const duration = Math.random() * 3 + 2;
+          confetti.style.animationDuration = duration + 's';
+          
+          document.body.appendChild(confetti);
+          
+          // Remover confete após animação
+          setTimeout(() => {
+            confetti.remove();
+          }, duration * 1000);
+        }, i * 100);
+      }
+      
+      // Rolar suavemente para a mensagem
+      surpriseMessage.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Contador de tempo juntos
+    function updateLoveTimer() {
+      const startDate = new Date("2024-10-21"); // Data do início ajustada para 21/10/2024
+      const now = new Date();
+      const diff = now - startDate;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      
+      document.getElementById("days-together").textContent = days;
+      document.getElementById("hours-together").textContent = hours;
+      document.getElementById("minutes-together").textContent = minutes;
+    }
+
+    setInterval(updateLoveTimer, 60000); // Atualiza a cada minuto
+    updateLoveTimer(); // Executa imediatamente
+
+    // Quiz interativo
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    quizOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        // Verifica se é a resposta correta
+        if (this.hasAttribute('data-correct')) {
+          this.classList.add('selected-correct');
+        } else {
+          this.classList.add('selected-wrong');
+        }
+        
+        // Destacar a resposta correta
+        const correctOption = this.parentNode.querySelector('[data-correct]');
+        correctOption.classList.add('selected-correct');
+        
+        // Desativa todas as opções após seleção
+        const allOptions = this.parentNode.querySelectorAll('.quiz-option');
+        allOptions.forEach(opt => {
+          opt.style.pointerEvents = 'none';
+        });
+      });
+    });
+
+    // Efeito de digitação na carta
+    const handwrittenText = document.querySelector('.handwritten-text');
+    const originalText = handwrittenText.innerHTML;
+    handwrittenText.innerHTML = '';
+    
+    let i = 0;
+    const typingEffect = setInterval(() => {
+      if (i < originalText.length) {
+        handwrittenText.innerHTML += originalText.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingEffect);
+      }
+    }, 20);
+  </script>
+
+</body>
+</html>
